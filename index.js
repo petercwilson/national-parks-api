@@ -1,6 +1,5 @@
 'use strict';
 
-// put your own value below!
 const api_Key = 'kWSmA8a1lM5M5VscIAoYqjQiYWUSCWZ2NwRm4Jt4'; 
 const searchURL = 'https://developer.nps.gov/api/v1/parks';
 
@@ -12,22 +11,15 @@ function formatQueryParams(params) {
 }
 
 function displayResults(responseJson) {
-  // if there are previous results, remove them
   console.log(responseJson);
   $('#results-list').empty();
-  // iterate through the items array
-  for (let i = 0; i < responseJson.length; i++){
-    // for each video object in the items 
-    //array, add a list item to the results 
-    //list with the video title, description,
-    //and thumbnail
+  for (let i = 1; i < responseJson.data.length; i++){
     $('#results-list').append(
-      `<li><h3>${responseJson[i].data.fullName}</h3>
-      <p>${responseJson[i].data.description}</p>
-      <p><a link="${responseJson[i].data.url}"</a>${responseJson[i].data.url}<?p>
+      `<li><h3>${responseJson.data[i].fullName}</h3>
+      <p>${responseJson.data[i].description}</p>
+      <p><a href="${responseJson.data[i].url}"</a>${responseJson.data[i].url}</p>
       </li>`
-    )};
-  //display the results section  
+    )}; 
   $('#results').removeClass('hidden');
 };
 
