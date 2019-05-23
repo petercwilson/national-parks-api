@@ -16,6 +16,7 @@ function displayResults(responseJson) {
   for (let i = 1; i < responseJson.data.length; i++){
     $('#results-list').append(
       `<li><h3>${responseJson.data[i].fullName}</h3>
+      <p>Address: ${responseJson.data[i].latLong}</p>
       <p>Description: ${responseJson.data[i].description}</p>
       <p>URL: <a href="${responseJson.data[i].url}"</a>${responseJson.data[i].url}</p>
       </li>`
@@ -49,8 +50,13 @@ function getParks(stateCode, limit=10) {
 
 function resetForm() {
     $(':reset').click(event => {
-    event.preventDefault();
     $('#results-list').empty();
+    });
+}
+
+function addState() {
+    $(':button').click(event => {
+    $('#js-search-term2').removeClass('hidden');
     });
 }
 
@@ -58,10 +64,12 @@ function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
     const searchTerm = $('#js-search-term').val();
+    const searchTerm2 = $('#js-search-term2').val();
     const maxResults = $('#js-max-results').val();
-    getParks(searchTerm, maxResults);
+    getParks(searchTerm, searchTerm2, maxResults);
   });
 }
 
+$(addState);
 $(watchForm);
 $(resetForm);

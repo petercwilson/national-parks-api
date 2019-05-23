@@ -8,6 +8,7 @@
   
   button, input[type="text"] {
     padding: 5px;
+    margin-top: 25px;
   }
   
   button:hover {
