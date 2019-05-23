@@ -47,6 +47,13 @@ function getParks(stateCode, limit=10) {
     });
 }
 
+function resetForm() {
+    $(':reset').click(event => {
+    event.preventDefault();
+    $('#results-list').empty();
+    });
+}
+
 function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
@@ -57,3 +64,4 @@ function watchForm() {
 }
 
 $(watchForm);
+$(resetForm);
