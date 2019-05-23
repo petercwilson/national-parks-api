@@ -66,7 +66,7 @@ function watchForm() {
     const searchTerm = $('#js-search-term').val();
     const searchTerm2 = $('#js-search-term2').val();
     const maxResults = $('#js-max-results').val();
-    getParks(searchTerm, searchTerm2, maxResults);
+    getParks([searchTerm, searchTerm2], maxResults);
   });
 }
 
