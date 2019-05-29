@@ -15,7 +15,7 @@ function displayResults(responseJson) {
   $('#results-list').empty();
   for (let i = 1; i < responseJson.data.length; i++){
     $('#results-list').append(
-      `<li><h3>${responseJson.data[i].fullName}</h3>
+      `<li><h3>${responseJson.data[i].fullName} - Location: ${responseJson.data[i].states}</h3>
       <p>Address: ${responseJson.data[i].latLong}</p>
       <p>Description: ${responseJson.data[i].description}</p>
       <p>URL: <a href="${responseJson.data[i].url}"</a>${responseJson.data[i].url}</p>
@@ -55,8 +55,16 @@ function resetForm() {
 }
 
 function addState() {
-    $(':button').click(event => {
+    $('#addBtn').click(event => {
     $('#js-search-term2').removeClass('hidden');
+    $('#delBtn').removeClass('hidden');
+    });
+}
+
+function deleteState() {
+    $('#delBtn').click(event => {
+    $('#js-search-term2').addClass('hidden');
+    $('#delBtn').addClass('hidden');
     });
 }
 
@@ -70,6 +78,7 @@ function watchForm() {
   });
 }
 
+$(deleteState);
 $(addState);
 $(watchForm);
 $(resetForm);
