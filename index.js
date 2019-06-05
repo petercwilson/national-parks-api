@@ -1,8 +1,11 @@
 'use strict';
 
-const api_Key = 'kWSmA8a1lM5M5VscIAoYqjQiYWUSCWZ2NwRm4Jt4'; 
+const api_key = 'kWSmA8a1lM5M5VscIAoYqjQiYWUSCWZ2NwRm4Jt4'; 
 const searchURL = 'https://developer.nps.gov/api/v1/parks';
+const maps_api_key = 'AIzaSyBRjXlqKnWWbSR3vfnFzBePg8L2JFhvS2k';
+const mapsURL = 'https://maps.googleapis.com/maps/api/geocode/json';
 
+// https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=YOUR_API_KEY
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
@@ -13,7 +16,7 @@ function formatQueryParams(params) {
 function displayResults(responseJson) {
   console.log(responseJson);
   $('#results-list').empty();
-  for (let i = 1; i < responseJson.data.length; i++){
+  for (let i = 0; i < responseJson.data.length; i++){
     $('#results-list').append(
       `<li><h3>${responseJson.data[i].fullName} - Location: ${responseJson.data[i].states}</h3>
       <p>Address: ${responseJson.data[i].latLong}</p>
@@ -26,9 +29,9 @@ function displayResults(responseJson) {
 
 function getParks(stateCode, limit=10) {
   const params = {
-    api_key: api_Key,
-    stateCode: stateCode,
-    limit: limit
+    api_key,
+    stateCode,
+    limit
   };
   const queryString = formatQueryParams(params)
   const url = searchURL + '?' + queryString;
@@ -54,20 +57,6 @@ function resetForm() {
     });
 }
 
-function addState() {
-    $('#addBtn').click(event => {
-    $('#js-search-term2').removeClass('hidden');
-    $('#delBtn').removeClass('hidden');
-    });
-}
-
-function deleteState() {
-    $('#delBtn').click(event => {
-    $('#js-search-term2').addClass('hidden');
-    $('#delBtn').addClass('hidden');
-    });
-}
-
 function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
@@ -78,7 +67,5 @@ function watchForm() {
   });
 }
 
-$(deleteState);
-$(addState);
 $(watchForm);
 $(resetForm);
