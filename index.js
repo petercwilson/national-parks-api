@@ -31,7 +31,8 @@ function getParks(stateCode, limit=10) {
   const params = {
     api_key,
     stateCode,
-    limit
+    limit,
+    start:0
   };
   const queryString = formatQueryParams(params)
   const url = searchURL + '?' + queryString;
