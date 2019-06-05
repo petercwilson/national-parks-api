@@ -57,8 +57,8 @@ function resetForm() {
 function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
-    const searchTerm = $('#js-search-term').val();
-    const searchTerm2 = $('#js-search-term2').val();
+    const searchTerm = $('#js-search-term').val(parseFloat(-1));
+    const searchTerm2 = $('#js-search-term2').val(parseFloat(-1));
     const maxResults = $('#js-max-results').val();
     getParks([searchTerm, searchTerm2], maxResults);
   });
