@@ -2,10 +2,6 @@
 
 const api_key = 'kWSmA8a1lM5M5VscIAoYqjQiYWUSCWZ2NwRm4Jt4'; 
 const searchURL = 'https://developer.nps.gov/api/v1/parks';
-const maps_api_key = 'AIzaSyBRjXlqKnWWbSR3vfnFzBePg8L2JFhvS2k';
-const mapsURL = 'https://maps.googleapis.com/maps/api/geocode/json';
-
-// Example URL - https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=YOUR_API_KEY
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
